@@ -1,0 +1,2 @@
+# redis-sentinel
+fg
