@@ -1,4 +1,4 @@
-FROM redis:3
+FROM redis:3.2
 
 COPY start-sentinel.sh /start-sentinel.sh
 COPY start-redis.sh /start-redis.sh
