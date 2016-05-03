@@ -21,6 +21,6 @@ echo "sentinel failover-timeout $GROUP_NAME 5000" >> $SENTINEL_CONFIGURATION_FIL
 echo "sentinel parallel-syncs $GROUP_NAME 1" >> $SENTINEL_CONFIGURATION_FILE
 echo "sentinel announce-ip ${ANNOUNCED_IP}" >> $SENTINEL_CONFIGURATION_FILE
 echo "sentinel announce-port ${ANNOUNCED_PORT}" >> $SENTINEL_CONFIGURATION_FILE
-echo "sentinel known-slave redis ${ANNOUNCED_IP} ${ANNOUNCED_PORT}" >> $SENTINEL_CONFIGURATION_FILE
+#echo "sentinel known-slave redis ${ANNOUNCED_IP} ${ANNOUNCED_PORT}" >> $SENTINEL_CONFIGURATION_FILE
 
 /usr/local/bin/redis-server $SENTINEL_CONFIGURATION_FILE --sentinel
