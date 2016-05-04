@@ -7,6 +7,6 @@ RUN chmod +x /start-redis.sh
 
 EXPOSE 5000 6379
 
-VOLUME ["/data"]
+#VOLUME ["/data"]
 
 CMD ["/start-redis.sh"]
