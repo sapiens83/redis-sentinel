@@ -6,7 +6,13 @@ set -e
 GROUP_NAME=${GROUP_NAME}
 MASTER_IP=${MASTER_IP}
 #MASTER_PORT=${MASTER_PORT}
-MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -d :)
+while true
+do
+MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -$
+        if [ "MASTER_PORT" != "" ]; then
+                break
+        fi
+done
 QUORUM=${QUORUM}
 #ANNOUNCED_IP=${ANNOUNCED_IP}
 ANNOUNCED_PORT=${ANNOUNCED_PORT}
