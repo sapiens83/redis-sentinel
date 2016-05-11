@@ -8,7 +8,7 @@ MASTER_IP=${MASTER_IP}
 #MASTER_PORT=${MASTER_PORT}
 while true
 do
-MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -$
+MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -d :)
         if [ "MASTER_PORT" != "" ]; then
                 break
         fi
