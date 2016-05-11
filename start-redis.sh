@@ -3,7 +3,14 @@
 ANNOUNCED_PORT=${ANNOUNCED_PORT}
 MASTER_IP=${MASTER_IP}
 #MASTER_PORT=${MASTER_PORT}
-MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -d :)
+while true
+do
+MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -$
+        if [ "MASTER_PORT" != "" ]; then
+                break
+        fi
+done
+
 REDIS_CONFIGURATION_FILE=/etc/redis.conf
 
 echo "bind 0.0.0.0" > $REDIS_CONFIGURATION_FILE
