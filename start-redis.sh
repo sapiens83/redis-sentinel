@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ANNOUNCED_PORT=${ANNOUNCED_PORT}
+ROLE=${ROLE}
 MASTER_IP=${MASTER_IP}
 #MASTER_PORT=${MASTER_PORT}
 while true
@@ -9,7 +10,7 @@ MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut
         if [ "$MASTER_PORT" != "" ]; then
                 break
         fi
-        if [ "$ANNOUNCED_PORT" == "31001" ]; then
+        if [ "$ROLE" == "master" ]; then
                 break
         fi
 done
