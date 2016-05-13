@@ -39,7 +39,7 @@ if [ -n "${MASTER_IP}" ] && [ -n "${MASTER_PORT}" ]; then
 fi
 
 /usr/local/bin/redis-server $REDIS_CONFIGURATION_FILE &
-if [ "$ROLE"=="master"];then
+if [ "$ROLE" == "master" ];then
         sleep 15
         ip=$(hostname -I | cut -f1 -d " ")
         redis-cli -h 9.7.116.148 -p 6378 set master $ip
