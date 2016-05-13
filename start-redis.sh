@@ -42,5 +42,5 @@ fi
 if [ "$ROLE" == "master" ];then
         sleep 15
         ip=$(hostname -I | cut -f1 -d " ")
-        redis-cli -h 9.7.116.148 -p 6378 set master $ip
+        redis-cli -h 9.7.116.148 -p 6378 set master "$ip"
 fi
