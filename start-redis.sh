@@ -38,7 +38,7 @@ if [ -n "${MASTER_IP}" ] && [ -n "${MASTER_PORT}" ]; then
   echo "slaveof ${MASTER_IP} ${MASTER_PORT}" >> $REDIS_CONFIGURATION_FILE
 fi
 
-nohup /usr/local/bin/redis-server $REDIS_CONFIGURATION_FILE &
+/usr/local/bin/redis-server $REDIS_CONFIGURATION_FILE 
 
 if [ "$ROLE" == "master" ]; then
         sleep 15
