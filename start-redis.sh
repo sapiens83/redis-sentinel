@@ -2,12 +2,16 @@
 
 ANNOUNCED_PORT=${ANNOUNCED_PORT}
 ROLE=${ROLE}
-MASTER_IP=${MASTER_IP}
+#MASTER_IP=${MASTER_IP}
 #MASTER_PORT=${MASTER_PORT}
+
+# getiing the master info
 while true
 do
 MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -d :)
         if [ "$MASTER_PORT" != "" ]; then
+                MASTER_IP=$(redis-cli -h 9.7.116.148 -p 6378 MONITOR & sleep 2 ; kill $!)
+                MASTER_IP=$(echo -e  "$MASTER_IP"|grep PUBL|cut -f6 -d , | cut -f1 -d " " | head -1 )
                 break
         fi
         if [ "$ROLE" == "master" ]; then
