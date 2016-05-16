@@ -4,15 +4,15 @@ set -u
 set -e
 
 GROUP_NAME=${GROUP_NAME}
-#MASTER_IP=${MASTER_IP}
+MASTER_IP=${MASTER_IP}
 #MASTER_PORT=${MASTER_PORT}
 while true
 do
 MASTER_PORT=$(redis-cli -h 9.7.116.148 -p 6378 info server | grep tcp_port | cut -f2 -d :)
         if [ "$MASTER_PORT" != "" ]; then
-                MASTER_IP=$(redis-cli -h 9.7.116.148 -p 6378 MONITOR & sleep 10 ; kill $!)
-                MASTER_IP=$(echo -e  "$MASTER_IP"|cut -f2 -d[ | cut -f2 -d " "| cut -f1 -d: | tail -n 1 )
-                echo $MASTER_IP
+                #MASTER_IP=$(redis-cli -h 9.7.116.148 -p 6378 MONITOR & sleep 10 ; kill $!)
+                #MASTER_IP=$(echo -e  "$MASTER_IP"|cut -f2 -d[ | cut -f2 -d " "| cut -f1 -d: | tail -n 1 )
+                #echo $MASTER_IP
                 echo $MASTER_PORT
                 break
         fi
