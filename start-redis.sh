@@ -37,7 +37,7 @@ if [ -n "${MASTER_IP}" ] && [ -n "${MASTER_PORT}" ]; then
   echo "Redis running as a slave"
   echo "slaveof ${MASTER_IP} ${MASTER_PORT}" >> $REDIS_CONFIGURATION_FILE
 fi
-
+echo "slave-read-only no" >> $REDIS_CONFIGURATION_FILE
 /usr/local/bin/redis-server $REDIS_CONFIGURATION_FILE 
 
 if [ "$ROLE" == "master" ]; then
