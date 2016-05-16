@@ -38,6 +38,10 @@ if [ -n "${MASTER_IP}" ] && [ -n "${MASTER_PORT}" ]; then
   echo "slaveof ${MASTER_IP} ${MASTER_PORT}" >> $REDIS_CONFIGURATION_FILE
 fi
 echo "slave-read-only no" >> $REDIS_CONFIGURATION_FILE
+echo "cluster-enabled yes" >> $REDIS_CONFIGURATION_FILE
+echo "cluster-config-file nodes.conf" >> $REDIS_CONFIGURATION_FILE
+echo "cluster-node-timeout 5000" >> $REDIS_CONFIGURATION_FILE
+echo "appendonly yes" >> $REDIS_CONFIGURATION_FILE
 /usr/local/bin/redis-server $REDIS_CONFIGURATION_FILE 
 
 if [ "$ROLE" == "master" ]; then
